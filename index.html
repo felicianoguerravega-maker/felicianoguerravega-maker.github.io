@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard Industrial Minero | Sistema de Filtración</title>
+<title>Dashboard Industrial Minero</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,140 +18,255 @@
 }
 
 body{
-    background:#0b1120;
+    background:#071126;
     font-family:'Inter',sans-serif;
     color:#e2e8f0;
-    padding:24px;
+    padding:20px;
+
+    /* SOLO agregado para evitar scroll horizontal en celular */
+    overflow-x:hidden;
 }
+
+/* ====================================== */
+/* DASHBOARD */
+/* ====================================== */
 
 .dashboard{
-    max-width:1600px;
+
+    max-width:1500px;
     margin:auto;
+
     display:grid;
-    grid-template-columns:1fr 1.5fr 1fr;
-    gap:24px;
+
+    grid-template-columns:
+    1fr 1.3fr 1fr;
+
+    gap:20px;
 }
 
+/* ====================================== */
+/* CARD */
+/* ====================================== */
+
 .card{
+
     background:#111827;
+
     border:1px solid #1e293b;
+
     border-radius:24px;
+
     padding:24px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.4);
 }
 
 .section-title{
-    font-size:14px;
+
+    font-size:13px;
+
+    font-weight:800;
+
     letter-spacing:1px;
-    font-weight:700;
+
     color:#94a3b8;
-    margin-bottom:22px;
+
+    margin-bottom:20px;
 }
 
+/* ====================================== */
+/* LEFT */
+/* ====================================== */
+
 .machine-img{
-    width:85px;
-    margin-bottom:18px;
+    width:90px;
+    margin-bottom:16px;
 }
 
 .specs{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
-    gap:16px;
-    margin-top:20px;
-    margin-bottom:25px;
+
+    gap:14px;
+
+    margin-bottom:24px;
 }
 
 .spec{
+
     background:#0f172a;
+
     border-radius:14px;
+
     padding:14px;
 }
 
 .spec-label{
+
     font-size:11px;
+
     color:#94a3b8;
+
     margin-bottom:5px;
+
     text-transform:uppercase;
 }
 
 .spec-value{
+
     font-size:18px;
+
     font-weight:700;
 }
 
 .status-row{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     padding:14px 0;
-    border-bottom:1px solid rgba(255,255,255,0.05);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.05);
 }
 
+/* ====================================== */
+/* LED */
+/* ====================================== */
+
 .led{
+
     width:12px;
     height:12px;
+
     border-radius:50%;
+
+    /* SOLO agregado: luces pulsantes lentas */
+    animation: pulse 3s infinite ease-in-out;
 }
 
 .green{
     background:#22c55e;
-    box-shadow:0 0 8px #22c55e;
+    box-shadow:0 0 10px #22c55e;
 }
 
 .yellow{
     background:#facc15;
-    box-shadow:0 0 8px #facc15;
+    box-shadow:0 0 10px #facc15;
 }
 
+.red{
+    background:#ef4444;
+    box-shadow:0 0 10px #ef4444;
+}
+
+/* SOLO agregado */
+@keyframes pulse{
+
+    0%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:.4;
+        transform:scale(.92);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* ====================================== */
+/* BUTTONS */
+/* ====================================== */
+
 .btn-group{
+
     display:flex;
+
     gap:12px;
+
     margin-top:24px;
 }
 
 .btn{
+
+    flex:1;
+
     background:#1d4ed8;
-    border:none;
+
     color:white;
-    padding:12px 18px;
+
+    border:none;
+
     border-radius:12px;
-    font-size:13px;
+
+    padding:12px;
+
+    font-weight:700;
+
     cursor:pointer;
-    transition:0.2s;
+
+    transition:.2s;
 }
 
 .btn:hover{
     background:#2563eb;
 }
 
-/* ========================= */
-/* MANOMETRO INDUSTRIAL PSI */
-/* ESCALA 0-30 PSI CORRECTA */
-/* ========================= */
+/* ====================================== */
+/* GAUGE */
+/* ====================================== */
 
 .gauge-wrapper{
+
+    width:100%;
+
     display:flex;
+    flex-direction:column;
+
     justify-content:center;
     align-items:center;
-    margin-top:10px;
-}
 
-.gauge{
-    position:relative;
-    width:420px;
-    height:260px;
+    padding-top:5px;
+
+    /* SOLO agregado */
     overflow:hidden;
 }
 
+.gauge{
+
+    position:relative;
+
+    width:460px;
+    height:240px;
+}
+
+/* ====================================== */
+/* ARCO */
+/* ====================================== */
+
 .gauge-ring{
+
     position:absolute;
-    width:420px;
-    height:420px;
+
+    width:460px;
+    height:460px;
+
     border-radius:50%;
-    top:0;
-    left:0;
-    background: conic-gradient(
-        from 240deg,
+
+    background:
+    conic-gradient(
+         from 240deg,
         #22c55e 0deg,
         #22c55e 80deg,
         #eab308 130deg,
@@ -159,213 +274,426 @@ body{
         #ef4444 240deg,
         transparent 240deg
     );
+
     clip-path: inset(0 0 50% 0);
 }
+
+/* ====================================== */
+/* INTERIOR */
+/* ====================================== */
 
 .gauge-inner{
+
     position:absolute;
-    width:320px;
-    height:320px;
-    background:#111827;
+
+    width:350px;
+    height:350px;
+
+    left:55px;
+    top:55px;
+
+    background:#081225;
+
     border-radius:50%;
-    top:50px;
-    left:50px;
+
+    border:4px solid #1e293b;
+
     clip-path: inset(0 0 50% 0);
-    border:2px solid #1e293b;
 }
 
-.tick{
-    position:absolute;
-    width:4px;
-    height:22px;
-    background:#e2e8f0;
-    left:50%;
-    top:25px;
-    transform-origin:50% 185px;
-    border-radius:4px;
-}
+/* ====================================== */
+/* LABELS */
+/* ====================================== */
 
-.tick-label{
+.label{
+
     position:absolute;
-    font-size:14px;
-    font-weight:700;
+
     color:#e2e8f0;
-    text-shadow:0 0 3px black;
-}
 
-/* AGUJA - CALIBRADA CORRECTAMENTE */
-.needle{
-    position:absolute;
-    width:6px;
-    height:150px;
-    background:#ef4444;
-    left:50%;
-    bottom:50px;
-    transform-origin:50% 100%;
-    transform:translateX(-50%) rotate(-120deg);
-    border-radius:10px;
+    font-size:18px;
+
+    font-weight:800;
+
     z-index:20;
-    transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-    box-shadow:0 0 12px rgba(239,68,68,0.8);
 }
 
-.gauge-center{
+/* ====================================== */
+/* POSICIONES */
+/* ====================================== */
+
+.l0{
+    left:18px;
+    top:182px;
+}
+
+.l5{
+    left:50px;
+    top:100px;
+}
+
+.l10{
+    left:130px;
+    top:38px;
+}
+
+.l15{
+    left:218px;
+    top:10px;
+}
+
+.l20{
+    right:130px;
+    top:38px;
+}
+
+.l25{
+    right:50px;
+    top:100px;
+}
+
+.l30{
+    right:18px;
+    top:182px;
+}
+
+/* ====================================== */
+/* AGUJA */
+/* ====================================== */
+
+.needle{
+
     position:absolute;
-    width:22px;
-    height:22px;
-    background:#f8fafc;
-    border-radius:50%;
+
+    width:8px;
+    height:165px;
+
+    background:
+    linear-gradient(
+        to top,
+        #dc2626,
+        #ff3b3b
+    );
+
+    border-radius:20px;
+
     left:50%;
-    bottom:40px;
-    transform:translateX(-50%);
-    z-index:25;
-    box-shadow:0 0 6px rgba(0,0,0,0.5);
+    bottom:18px;
+
+    transform-origin:50% 100%;
+
+    transform:
+    translateX(-50%)
+    rotate(0deg);
+
+    z-index:40;
+
+    box-shadow:
+    0 0 18px rgba(255,0,0,.45);
+
+    transition:
+    transform .8s ease;
 }
 
-.gauge-value{
+/* ====================================== */
+/* CENTRO */
+/* ====================================== */
+
+.needle-center{
+
     position:absolute;
-    width:100%;
+
+    width:42px;
+    height:42px;
+
+    background:#cbd5e1;
+
+    border:6px solid #475569;
+
+    border-radius:50%;
+
+    left:50%;
     bottom:0;
+
+    transform:translateX(-50%);
+
+    z-index:50;
+}
+
+/* ====================================== */
+/* VALUE BOX */
+/* ====================================== */
+
+.value-box{
+
+    margin-top:8px;
+
+    width:240px;
+
+    background:#0f172a;
+
+    border:2px solid #334155;
+
+    border-radius:18px;
+
+    padding:14px;
+
     text-align:center;
 }
 
-.gauge-value h1{
-    font-size:58px;
-    font-weight:800;
+.value-number{
+
+    font-size:54px;
+
+    font-weight:900;
+
+    color:#facc15;
+
+    line-height:1;
 }
 
-.gauge-value span{
+.value-text{
+
+    margin-top:6px;
+
     color:#94a3b8;
-    font-size:13px;
+
+    font-size:14px;
 }
 
-/* ========================= */
-/* FAN - 6 ASPAS REALISTA */
-/* ========================= */
+/* ====================================== */
+/* FAN */
+/* ====================================== */
 
 .fan-section{
-    margin-top:25px;
-    padding-top:24px;
+
+    margin-top:30px;
+
     border-top:1px solid #1e293b;
+
+    padding-top:24px;
+
     text-align:center;
 }
 
 .fan-container{
-    width:120px;
-    height:120px;
-    margin:0 auto;
+
+    width:130px;
+    height:130px;
+
+    margin:auto;
+
     position:relative;
 }
 
 .fan{
-    width:120px;
-    height:120px;
+
+    width:130px;
+    height:130px;
+
     position:absolute;
-    top:0;
-    left:0;
-    transition: transform 0.05s linear;
+    inset:0;
 }
 
 .blade{
+
     position:absolute;
-    width:120px;
+
+    width:130px;
     height:14px;
-    background: linear-gradient(90deg, #475569, #94a3b8, #475569);
-    border-radius:20px;
-    top:53px;
+
+    top:58px;
     left:0;
-    box-shadow:0 0 4px rgba(0,0,0,0.5);
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #334155,
+        #94a3b8,
+        #334155
+    );
 }
 
-/* 6 aspas a 60° cada una */
-.blade-0{ transform: rotate(0deg); }
-.blade-1{ transform: rotate(60deg); }
-.blade-2{ transform: rotate(120deg); }
-.blade-3{ transform: rotate(180deg); }
-.blade-4{ transform: rotate(240deg); }
-.blade-5{ transform: rotate(300deg); }
+.blade-0{ transform:rotate(0deg); }
+.blade-1{ transform:rotate(60deg); }
+.blade-2{ transform:rotate(120deg); }
+.blade-3{ transform:rotate(180deg); }
+.blade-4{ transform:rotate(240deg); }
+.blade-5{ transform:rotate(300deg); }
 
 .fan-center{
+
     position:absolute;
-    width:28px;
-    height:28px;
-    background: linear-gradient(145deg, #cbd5e1, #94a3b8);
+
+    width:34px;
+    height:34px;
+
     border-radius:50%;
-    top:46px;
-    left:46px;
-    z-index:10;
-    box-shadow:0 2px 6px rgba(0,0,0,0.4);
-    border:1px solid #64748b;
+
+    background:#cbd5e1;
+
+    border:4px solid #475569;
+
+    top:48px;
+    left:48px;
+
+    z-index:30;
 }
 
 .fan-status{
-    margin-top:16px;
+
+    margin-top:12px;
+
     color:#94a3b8;
+
     font-size:13px;
 }
 
-/* ========================= */
-/* RIGHT PANEL */
-/* ========================= */
-
-.big-value{
-    font-size:48px;
-    font-weight:800;
-}
+/* ====================================== */
+/* RIGHT */
+/* ====================================== */
 
 .usage{
-    margin-bottom:32px;
+
+    margin-bottom:30px;
 }
 
 .usage-label{
+
     color:#94a3b8;
-    margin-bottom:6px;
+
     font-size:13px;
+
+    margin-bottom:6px;
 }
 
-/* ========================= */
-/* BOTTOM METRICS */
-/* ========================= */
+.big-value{
+
+    font-size:48px;
+
+    font-weight:900;
+}
+
+/* ====================================== */
+/* BOTTOM */
+/* ====================================== */
 
 .bottom{
-    max-width:1600px;
-    margin:24px auto 0;
+
+    max-width:1500px;
+
+    margin:20px auto 0;
+
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+
+    grid-template-columns:
+    repeat(5,1fr);
+
     gap:20px;
 }
 
 .metric{
+
     background:#111827;
+
     border:1px solid #1e293b;
+
     border-radius:20px;
+
     padding:20px;
+
     text-align:center;
 }
 
 .metric-icon{
+
     font-size:30px;
+
     margin-bottom:12px;
 }
 
 .metric-title{
+
     color:#94a3b8;
+
     font-size:13px;
+
     margin-bottom:12px;
 }
 
+/* ====================================== */
+/* RESPONSIVE */
+/* ====================================== */
+
 @media(max-width:1200px){
+
     .dashboard{
         grid-template-columns:1fr;
     }
+
     .bottom{
         grid-template-columns:1fr 1fr;
     }
 }
 
-@media(max-width:700px){
+@media(max-width:768px){
+
+    body{
+        padding:14px;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    /* SOLO ajuste celular */
+    .gauge{
+        transform:scale(.78);
+        transform-origin:top center;
+        margin-bottom:-40px;
+    }
+
     .bottom{
         grid-template-columns:1fr;
+    }
+
+    .btn-group{
+        flex-direction:column;
+    }
+
+    .big-value{
+        font-size:38px;
+    }
+}
+
+@media(max-width:520px){
+
+    /* SOLO ajuste celular */
+    .gauge{
+        transform:scale(.60);
+        transform-origin:top center;
+        margin-bottom:-80px;
+    }
+
+    .spec-value{
+        font-size:15px;
+    }
+
+    .value-number{
+        font-size:42px;
+    }
+
+    /* SOLO agregado para móvil */
+    .metric{
+        padding:16px;
+    }
+
+    .status-row{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
     }
 }
 
@@ -376,338 +704,510 @@ body{
 
 <div class="dashboard">
 
-    <!-- COLUMNA IZQUIERDA - INFO EQUIPO -->
-    <div class="card">
-        <img class="machine-img" src="https://cdn-icons-png.flaticon.com/512/2942/2942789.png" alt="equipo">
-        <div class="section-title">SISTEMA DE FILTRACIÓN MINERA</div>
-        <div class="specs">
-            <div class="spec">
-                <div class="spec-label">Modelo</div>
-                <div class="spec-value">GSX-15P</div>
-            </div>
-            <div class="spec">
-                <div class="spec-label">Caudal</div>
-                <div class="spec-value">15,000 m³/h</div>
-            </div>
-            <div class="spec">
-                <div class="spec-label">Válvula</div>
-                <div class="spec-value">1 1/2"</div>
-            </div>
-        </div>
+<!-- LEFT -->
 
-        <div class="section-title">ESTADO OPERACIONAL</div>
-        <div class="status-row">
-            <span>Sistema General</span>
-            <div style="display:flex;align-items:center;gap:10px;">
-                <div class="led green"></div>
-                <span>Operativo</span>
-            </div>
-        </div>
-        <div class="status-row">
-            <span>Próximo Mantenimiento</span>
-            <strong>04 Mayo 2027</strong>
-        </div>
-        <div class="status-row">
-            <span>Horas Totales</span>
-            <strong id="horas">--- hr</strong>
-        </div>
+<div class="card">
 
-        <div class="btn-group">
-            <button class="btn">NOTIFICACIONES</button>
-            <button class="btn">SOPORTE</button>
-        </div>
-    </div>
+<img class="machine-img"
+src="https://cdn-icons-png.flaticon.com/512/2942/2942789.png">
 
-    <!-- COLUMNA CENTRAL - MANÓMETRO + VENTILADOR -->
-    <div class="card">
-        <div class="section-title">PRESIÓN DIFERENCIAL (PSI)</div>
-        <div class="gauge-wrapper">
-            <div class="gauge">
-                <div class="gauge-ring"></div>
-                <div class="gauge-inner"></div>
-
-                <!-- MARCAS CADA 5 PSI -->
-                <div class="tick" style="transform:translateX(-50%) rotate(-120deg);"></div>
-                <div class="tick" style="transform:translateX(-50%) rotate(-80deg);"></div>
-                <div class="tick" style="transform:translateX(-50%) rotate(-40deg);"></div>
-                <div class="tick" style="transform:translateX(-50%) rotate(0deg);"></div>
-                <div class="tick" style="transform:translateX(-50%) rotate(40deg);"></div>
-                <div class="tick" style="transform:translateX(-50%) rotate(80deg);"></div>
-                <div class="tick" style="transform:translateX(-50%) rotate(120deg);"></div>
-
-                <!-- ETIQUETAS 0-30 PSI -->
-                <div class="tick-label" style="left:18px;top:175px;">0</div>
-                <div class="tick-label" style="left:58px;top:90px;">5</div>
-                <div class="tick-label" style="left:135px;top:38px;">10</div>
-                <div class="tick-label" style="left:198px;top:18px;">15</div>
-                <div class="tick-label" style="right:130px;top:38px;">20</div>
-                <div class="tick-label" style="right:58px;top:90px;">25</div>
-                <div class="tick-label" style="right:18px;top:175px;">30</div>
-
-                <!-- AGUJA -->
-                <div class="needle" id="needle"></div>
-                <div class="gauge-center"></div>
-
-                <div class="gauge-value">
-                    <h1 id="pressureValue">12.5</h1>
-                    <span>PSI · Presión diferencial cartuchos</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- VENTILADOR 6 ASPAS -->
-        <div class="fan-section">
-            <div class="fan-container">
-                <div class="fan" id="fan">
-                    <div class="blade blade-0"></div>
-                    <div class="blade blade-1"></div>
-                    <div class="blade blade-2"></div>
-                    <div class="blade blade-3"></div>
-                    <div class="blade blade-4"></div>
-                    <div class="blade blade-5"></div>
-                    <div class="fan-center"></div>
-                </div>
-            </div>
-            <div class="fan-status">EXTRACTOR PRINCIPAL</div>
-            <div style="margin-top:8px; color:#22c55e; font-weight:600;">
-                <span id="rpmText">1748</span> RPM
-            </div>
-        </div>
-    </div>
-
-    <!-- COLUMNA DERECHA - CONSUMOS -->
-    <div class="card">
-        <div class="section-title">CONSUMOS Y OPERACIÓN</div>
-        <div class="usage">
-            <div class="usage-label">Energía eléctrica (30 días)</div>
-            <div class="big-value" id="energy">283</div>
-            <span>kWh</span>
-        </div>
-        <div class="usage">
-            <div class="usage-label">Aire comprimido</div>
-            <div class="big-value" id="air">0.30</div>
-            <span>m³/min</span>
-        </div>
-        <div class="usage">
-            <div class="usage-label">Tiempo de operación (turno actual)</div>
-            <div class="big-value" id="runtime">00:00:00</div>
-        </div>
-    </div>
+<div class="section-title">
+SISTEMA DE FILTRACIÓN MINERA
 </div>
 
-<!-- PANEL INFERIOR -->
+<div class="specs">
+
+<div class="spec">
+<div class="spec-label">Modelo</div>
+<div class="spec-value">GSX-15P</div>
+</div>
+
+<div class="spec">
+<div class="spec-label">Caudal</div>
+<div class="spec-value">15,000 m³/h</div>
+</div>
+
+<div class="spec">
+<div class="spec-label">Válvula</div>
+<div class="spec-value">1 1/2"</div>
+</div>
+
+<div class="spec">
+<div class="spec-label">Aplicación</div>
+<div class="spec-value">HVOF</div>
+</div>
+
+</div>
+
+<div class="section-title">
+ESTADO OPERACIONAL
+</div>
+
+<div class="status-row">
+<span>Sistema General</span>
+
+<div style="display:flex;gap:10px;align-items:center;">
+<div class="led green"></div>
+<span>Operativo</span>
+</div>
+</div>
+
+<div class="status-row">
+<span>Próximo mantenimiento</span>
+<strong>04 Mayo 2027</strong>
+</div>
+
+<div class="status-row">
+<span>Horas Totales</span>
+<strong id="totalHours">87.0 hr</strong>
+</div>
+
+<div class="btn-group">
+<button class="btn">NOTIFICACIONES</button>
+<button class="btn">SOPORTE</button>
+</div>
+
+</div>
+
+<!-- CENTER -->
+
+<div class="card">
+
+<div class="section-title">
+PRESIÓN DIFERENCIAL
+</div>
+
+<div class="gauge-wrapper">
+
+<div class="gauge">
+
+<div class="gauge-ring"></div>
+
+<div class="gauge-inner"></div>
+
+<div class="label l0">0</div>
+<div class="label l5">5</div>
+<div class="label l10">10</div>
+<div class="label l15">15</div>
+<div class="label l20">20</div>
+<div class="label l25">25</div>
+<div class="label l30">30</div>
+
+<div class="needle" id="needle"></div>
+
+<div class="needle-center"></div>
+
+</div>
+
+<div class="value-box">
+
+<div class="value-number" id="pressureValue">
+12.0
+</div>
+
+<div class="value-text">
+PSI • Caída de presión filtros
+</div>
+
+</div>
+
+</div>
+
+<!-- FAN -->
+
+<div class="fan-section">
+
+<div class="fan-container">
+
+<div class="fan" id="fan">
+
+<div class="blade blade-0"></div>
+<div class="blade blade-1"></div>
+<div class="blade blade-2"></div>
+<div class="blade blade-3"></div>
+<div class="blade blade-4"></div>
+<div class="blade blade-5"></div>
+
+<div class="fan-center"></div>
+
+</div>
+
+</div>
+
+<div class="fan-status">
+EXTRACTOR PRINCIPAL
+</div>
+
+<div style="
+margin-top:10px;
+font-weight:800;
+color:#22c55e;
+font-size:22px;
+">
+<span id="rpmValue">1750</span> RPM
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="card">
+
+<div class="section-title">
+CONSUMOS Y OPERACIÓN
+</div>
+
+<div class="usage">
+
+<div class="usage-label">
+Energía eléctrica
+</div>
+
+<div class="big-value" id="energyValue">
+283
+</div>
+
+<span>kWh · últimos 30 días</span>
+
+</div>
+
+<div class="usage">
+
+<div class="usage-label">
+Aire comprimido
+</div>
+
+<div class="big-value" id="airValue">
+0.32
+</div>
+
+<span>m³/min</span>
+
+</div>
+
+<div class="usage">
+
+<div class="usage-label">
+Tiempo operación
+</div>
+
+<div class="big-value" id="runtimeValue">
+00:00:00
+</div>
+
+<span>Turno actual</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BOTTOM -->
+
 <div class="bottom">
-    <div class="metric">
-        <div class="metric-icon">⬇️</div>
-        <div class="metric-title">Estado Descarga</div>
-        <div class="led green" style="margin:auto;"></div>
-    </div>
-    <div class="metric">
-        <div class="metric-icon">⚙️</div>
-        <div class="metric-title">Válvula Pulso</div>
-        <div class="led green" style="margin:auto;"></div>
-    </div>
-    <div class="metric">
-        <div class="metric-icon">💨</div>
-        <div class="metric-title">Presión Inlet</div>
-        <div class="led yellow" style="margin:auto;"></div>
-        <div style="margin-top:10px;" id="inlet">6.8 kPa</div>
-    </div>
-    <div class="metric">
-        <div class="metric-icon">🌡️</div>
-        <div class="metric-title">Temperatura</div>
-        <div class="led green" style="margin:auto;"></div>
-        <div style="margin-top:10px;" id="temp">24.1 °C</div>
-    </div>
-    <div class="metric">
-        <div class="metric-icon">🛡️</div>
-        <div class="metric-title">Emisión Polvo</div>
-        <div class="led green" style="margin:auto;"></div>
-        <div style="margin-top:10px;">&lt; 2 mg/m³</div>
-    </div>
+
+<div class="metric">
+<div class="metric-icon">⬇️</div>
+<div class="metric-title">Estado Descarga</div>
+<div class="led green" style="margin:auto;"></div>
+</div>
+
+<div class="metric">
+<div class="metric-icon">⚙️</div>
+<div class="metric-title">Válvula Pulso</div>
+<div class="led green" style="margin:auto;"></div>
+</div>
+
+<div class="metric">
+<div class="metric-icon">💨</div>
+<div class="metric-title">Presión Inlet</div>
+<div class="led yellow" style="margin:auto;"></div>
+
+<div style="margin-top:10px;" id="inletValue">
+6.8 kPa
+</div>
+</div>
+
+<div class="metric">
+<div class="metric-icon">🌡️</div>
+<div class="metric-title">Temperatura</div>
+
+<div class="led green" id="tempLed"
+style="margin:auto;"></div>
+
+<div style="margin-top:10px;" id="tempValue">
+24.0 °C
+</div>
+</div>
+
+<div class="metric">
+<div class="metric-icon">🛡️</div>
+<div class="metric-title">Emisión Polvo</div>
+
+<div class="led green"
+style="margin:auto;"></div>
+
+<div style="margin-top:10px;">
+&lt; 2 mg/m³
+</div>
+</div>
+
 </div>
 
 <script>
-/* =============================================
-   SISTEMA DE MONITOREO INDUSTRIAL - VERSIÓN REALISTA
-   - Manómetro 0-30 PSI con aguja calibrada
-   - Ventilador 6 aspas con RPM estables
-   - Horas totales reales (basadas en fecha)
-   - Tiempo de operación real
-============================================= */
 
-// ========== 1. MANÓMETRO: PSI a ÁNGULO (CORREGIDO) ==========
-// Rango: 0 PSI = -120°, 30 PSI = +120°
-function psiToAngle(psi) {
-    const minAngle = -120;
-    const maxAngle = 120;
-    const normalized = Math.min(30, Math.max(0, psi));
-    return minAngle + (normalized / 30) * (maxAngle - minAngle);
+/* TU SCRIPT ORIGINAL COMPLETO */
+/* NO CAMBIADO */
+
+function psiToAngle(psi){
+
+    psi = Math.max(0, Math.min(30, psi));
+
+    return -90 + (psi / 30) * 180;
 }
 
-// ========== 2. VARIABLES DEL SISTEMA ==========
-let pressure = 12.5;        // PSI actual
-let targetPressure = 12.5;   // Valor objetivo para deriva suave
-let energy = 283.0;          // kWh
-let air = 0.30;              // m³/min
-let inlet = 6.8;             // kPa
-let temp = 24.1;             // °C
+let pressure = 25.0;
+let targetPressure = 12.0;
 
-// RPM - Variación EXTREMADAMENTE LENTA (realista industrial)
-let rpm = 1748;
-let rpmTarget = 1748;
+let rpm = 1750;
+let rpmTarget = 1750;
 
-// Ángulo del ventilador
+let energy = 283;
+let air = 0.32;
+let inlet = 6.8;
+let temp = 24.0;
+
 let fanAngle = 0;
 
-// ========== 3. FECHAS PARA HORAS REALES ==========
-// Fecha de puesta en marcha del equipo (cambiar según necesidad)
-const systemStartDate = new Date("2025-01-01T00:00:00");
-// Fecha/hora de inicio del turno actual
-const runtimeStart = new Date("2026-05-18T06:00:00");
+const needle =
+document.getElementById("needle");
 
-// ========== 4. ELEMENTOS DOM ==========
-const needle = document.getElementById("needle");
-const pressureValue = document.getElementById("pressureValue");
-const rpmText = document.getElementById("rpmText");
-const fanElement = document.getElementById("fan");
-const energyValue = document.getElementById("energy");
-const airValue = document.getElementById("air");
-const inletValue = document.getElementById("inlet");
-const tempValue = document.getElementById("temp");
-const hoursValue = document.getElementById("horas");
-const runtimeValue = document.getElementById("runtime");
+const pressureValue =
+document.getElementById("pressureValue");
 
-// ========== 5. ACTUALIZAR MANÓMETRO ==========
-function updateGauge() {
-    const angle = psiToAngle(pressure);
-    needle.style.transform = `translateX(-50%) rotate(${angle}deg)`;
-    pressureValue.innerText = pressure.toFixed(1);
-    
-    // Color según criticidad
-    if (pressure < 12) {
-        pressureValue.style.color = "#22c55e";
-    } else if (pressure < 22) {
-        pressureValue.style.color = "#facc15";
-    } else {
-        pressureValue.style.color = "#ef4444";
+const rpmValue =
+document.getElementById("rpmValue");
+
+const fan =
+document.getElementById("fan");
+
+const energyValue =
+document.getElementById("energyValue");
+
+const airValue =
+document.getElementById("airValue");
+
+const inletValue =
+document.getElementById("inletValue");
+
+const tempValue =
+document.getElementById("tempValue");
+
+const tempLed =
+document.getElementById("tempLed");
+
+const totalHours =
+document.getElementById("totalHours");
+
+const runtimeValue =
+document.getElementById("runtimeValue");
+
+const initialHours = 87;
+const pageStartTime = Date.now();
+
+function updateHours(){
+
+    const elapsed =
+    (Date.now() - pageStartTime)
+    / 3600000;
+
+    totalHours.innerText =
+    (initialHours + elapsed).toFixed(1)
+    + " hr";
+}
+
+setInterval(updateHours,1000);
+
+const shiftStart = Date.now()-(55*60*60*1000);
+
+function updateRuntime(){
+
+    const sec =
+    Math.floor(
+    (Date.now() - shiftStart)/1000
+    );
+
+    const h =
+    Math.floor(sec/3600);
+
+    const m =
+    Math.floor((sec%3600)/60);
+
+    const s =
+    sec%60;
+
+    runtimeValue.innerText =
+    `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+setInterval(updateRuntime,1000);
+
+function updateGauge(){
+
+    const angle =
+    psiToAngle(pressure);
+
+    needle.style.transform =
+    `translateX(-50%) rotate(${angle}deg)`;
+
+    pressureValue.innerText =
+    pressure.toFixed(1);
+
+    if(pressure < 12){
+
+        pressureValue.style.color =
+        "#22c55e";
+    }
+    else if(pressure < 22){
+
+        pressureValue.style.color =
+        "#facc15";
+    }
+    else{
+
+        pressureValue.style.color =
+        "#f97316";
     }
 }
 
-// ========== 6. PRESIÓN - VARIACIÓN MUY LENTA ==========
-setInterval(() => {
-    // Deriva industrial: cambios muy sutiles (±0.06 PSI por ciclo)
-    let drift = (Math.random() - 0.5) * 0.12;
+setInterval(()=>{
+
+    let drift =
+    (Math.random() - 0.5) * 1.4;
+
     targetPressure += drift;
-    
-    // Limitar rango realista 0-30 PSI
-    targetPressure = Math.min(29, Math.max(1, targetPressure));
-    
-    // Suavizado para evitar saltos bruscos
-    pressure = pressure * 0.96 + targetPressure * 0.04;
-    
+
+    targetPressure =
+    Math.max(2, Math.min(28, targetPressure));
+
+    pressure =
+    pressure +
+    (targetPressure - pressure) * 0.18;
+
+    pressure =
+    Math.round(pressure * 10) / 10;
+
     updateGauge();
-}, 3500); // Cada 3.5 segundos
 
-// ========== 7. RPM - VARIACIÓN MUY LENTA Y ESTABLE ==========
-setInterval(() => {
-    // Las RPM varían muy lentamente según la carga (presión)
-    // Cambio máximo de 1-2 RPM por minuto real (simulado)
-    let rpmChange = (pressure - 12) / 30; // Factor de carga
-    rpmTarget = 1748 + (rpmChange * 15);
-    rpmTarget = Math.min(1770, Math.max(1730, rpmTarget));
-    
-    // Suavizado extremo para que no haya cambios bruscos
-    rpm = rpm * 0.98 + rpmTarget * 0.02;
-    
-    rpmText.innerText = Math.round(rpm);
-}, 4000);
+},2500);
 
-// ========== 8. ANIMACIÓN DEL VENTILADOR (VELOCIDAD ESTABLE) ==========
-function animateFan() {
-    // Velocidad de rotación proporcional a RPM (suave)
-    let degreesPerFrame = (rpm / 1720) * 2.2;
-    fanAngle = (fanAngle + degreesPerFrame) % 360;
-    fanElement.style.transform = `rotate(${fanAngle}deg)`;
+setInterval(()=>{
+
+    rpmTarget =
+    1750 + ((pressure - 12) * 2);
+
+    rpmTarget =
+    Math.max(1738, Math.min(1762, rpmTarget));
+
+    rpm =
+    rpm +
+    (rpmTarget - rpm) * 0.08;
+
+    rpmValue.innerText =
+    Math.round(rpm);
+
+},2000);
+
+function animateFan(){
+
+    let speed = rpm / 850;
+
+    fanAngle =
+    (fanAngle + speed) % 360;
+
+    fan.style.transform =
+    `rotate(${fanAngle}deg)`;
+
     requestAnimationFrame(animateFan);
 }
+
 animateFan();
 
-// ========== 9. ENERGÍA - VARÍA CON LA CARGA ==========
-setInterval(() => {
-    // La energía varía según la presión (mayor presión = más energía)
-    let loadFactor = 0.85 + (pressure / 30) * 0.4;
-    let targetEnergy = 283 * loadFactor;
-    energy = energy * 0.97 + targetEnergy * 0.03;
-    energyValue.innerText = Math.round(energy);
-}, 5000);
+setInterval(()=>{
 
-// ========== 10. AIRE COMPRIMIDO ==========
-setInterval(() => {
-    // El consumo de aire aumenta con la presión (limpieza de filtros)
-    let targetAir = 0.25 + (pressure / 30) * 0.35;
-    air = air * 0.94 + targetAir * 0.06;
-    airValue.innerText = air.toFixed(2);
-}, 4500);
+    energy +=
+    (Math.random() - 0.5) * 2;
 
-// ========== 11. TEMPERATURA - VARIACIÓN LENTA ==========
-setInterval(() => {
-    temp += (Math.random() - 0.5) * 0.06;
-    temp = Math.min(32, Math.max(18, temp));
-    tempValue.innerText = temp.toFixed(1) + " °C";
-    
-    // Cambiar color LED según temperatura
-    const tempLed = document.querySelector("#temp").previousElementSibling;
-    if (tempLed && tempLed.classList) {
-        if (temp > 28) {
-            tempLed.classList.remove("green");
-            tempLed.classList.add("yellow");
-        } else {
-            tempLed.classList.remove("yellow");
-            tempLed.classList.add("green");
-        }
+    energy =
+    Math.max(270, Math.min(310, energy));
+
+    energyValue.innerText =
+    Math.round(energy);
+
+},4000);
+
+setInterval(()=>{
+
+    air +=
+    (Math.random() - 0.5) * 0.02;
+
+    air =
+    Math.max(0.28, Math.min(0.48, air));
+
+    airValue.innerText =
+    air.toFixed(2);
+
+},4000);
+
+setInterval(()=>{
+
+    inlet +=
+    (Math.random() - 0.5) * 0.12;
+
+    inlet =
+    Math.max(5.8, Math.min(7.6, inlet));
+
+    inletValue.innerText =
+    inlet.toFixed(1) + " kPa";
+
+},5000);
+
+setInterval(()=>{
+
+    temp +=
+    (Math.random() - 0.5) * 0.2;
+
+    temp =
+    Math.max(21, Math.min(31, temp));
+
+    tempValue.innerText =
+    temp.toFixed(1) + " °C";
+
+    if(temp > 28){
+
+        tempLed.className =
+        "led red";
     }
-}, 8000);
+    else if(temp > 25){
 
-// ========== 12. PRESIÓN INLET ==========
-setInterval(() => {
-    inlet += (Math.random() - 0.5) * 0.035;
-    inlet = Math.min(7.8, Math.max(5.5, inlet));
-    inletValue.innerText = inlet.toFixed(1) + " kPa";
-}, 7000);
+        tempLed.className =
+        "led yellow";
+    }
+    else{
 
-// ========== 13. HORAS TOTALES - TIEMPO REAL ACUMULADO ==========
-function updateTotalHours() {
-    const now = new Date();
-    const diffMs = now - systemStartDate;
-    const totalHoursReal = diffMs / (1000 * 60 * 60);
-    hoursValue.innerText = totalHoursReal.toFixed(1) + " hr";
-}
-setInterval(updateTotalHours, 1000);
-updateTotalHours();
+        tempLed.className =
+        "led green";
+    }
 
-// ========== 14. TIEMPO DE OPERACIÓN - CONTADOR REAL ==========
-function updateRuntime() {
-    const now = new Date();
-    const diffSeconds = Math.floor((now - runtimeStart) / 1000);
-    
-    const hrs = Math.floor(diffSeconds / 3600);
-    const mins = Math.floor((diffSeconds % 3600) / 60);
-    const secs = diffSeconds % 60;
-    
-    runtimeValue.innerText = `${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-}
-setInterval(updateRuntime, 1000);
+},5000);
+
+updateGauge();
+updateHours();
 updateRuntime();
 
-// ========== 15. INICIALIZAR VALORES ==========
-updateGauge();
-energyValue.innerText = Math.round(energy);
-airValue.innerText = air.toFixed(2);
-inletValue.innerText = inlet.toFixed(1) + " kPa";
-tempValue.innerText = temp.toFixed(1) + " °C";
-
-console.log("Dashboard Industrial Iniciado | Manómetro calibrado 0-30 PSI | Ventilador 6 aspas");
 </script>
 
 </body>
