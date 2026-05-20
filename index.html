@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard Industrial Minero</title>
+<title>Dashboard Industrial Minero | Simulación Suave</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -91,7 +91,7 @@ body{
     width:12px;
     height:12px;
     border-radius:50%;
-    animation: pulse 3s infinite ease-in-out;
+    animation:pulse 3s infinite ease-in-out;
 }
 
 .green{
@@ -159,7 +159,7 @@ body{
     height:460px;
     border-radius:50%;
     background:conic-gradient(from 240deg, #22c55e 0deg, #22c55e 80deg, #eab308 130deg, #f97316 185deg, #ef4444 240deg, transparent 240deg);
-    clip-path: inset(0 0 50% 0);
+    clip-path:inset(0 0 50% 0);
 }
 
 .gauge-inner{
@@ -171,7 +171,7 @@ body{
     background:#081225;
     border-radius:50%;
     border:4px solid #1e293b;
-    clip-path: inset(0 0 50% 0);
+    clip-path:inset(0 0 50% 0);
 }
 
 .label{
@@ -202,7 +202,7 @@ body{
     transform:translateX(-50%) rotate(0deg);
     z-index:40;
     box-shadow:0 0 18px rgba(255,0,0,.45);
-    transition:transform .8s ease;
+    transition:transform .3s ease-out;
 }
 
 .needle-center{
@@ -233,6 +233,7 @@ body{
     font-weight:900;
     color:#facc15;
     line-height:1;
+    transition:color .2s;
 }
 
 .value-text{
@@ -351,6 +352,7 @@ body{
     .bottom{ grid-template-columns:1fr; }
     .btn-group{ flex-direction:column; }
     .big-value{ font-size:38px; }
+    .status-row{ padding:12px 0; }
 }
 
 @media(max-width:520px){
@@ -358,7 +360,7 @@ body{
     .spec-value{ font-size:15px; }
     .value-number{ font-size:42px; }
     .metric{ padding:16px; }
-    .status-row{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .status-row{ padding:10px 0; }
 }
 
 </style>
@@ -368,39 +370,46 @@ body{
 
 <div class="dashboard">
 
-<!-- LEFT -->
 <div class="card">
+
 <img class="machine-img" src="https://cdn-icons-png.flaticon.com/512/2942/2942789.png">
+
 <div class="section-title">SISTEMA DE FILTRACIÓN MINERA</div>
+
 <div class="specs">
 <div class="spec"><div class="spec-label">Modelo</div><div class="spec-value">GSX-15P</div></div>
 <div class="spec"><div class="spec-label">Caudal</div><div class="spec-value">15,000 m³/h</div></div>
 <div class="spec"><div class="spec-label">Válvula</div><div class="spec-value">1 1/2"</div></div>
 <div class="spec"><div class="spec-label">Aplicación</div><div class="spec-value">HVOF</div></div>
 </div>
+
 <div class="section-title">ESTADO OPERACIONAL</div>
+
 <div class="status-row">
-<span>Sistema General</span>
-<div style="display:flex;gap:10px;align-items:center;">
-<div class="led green"></div>
-<span>Operativo</span>
+    <span>Sistema General</span>
+    <div style="display:flex;gap:10px;align-items:center;">
+        <div class="led green"></div>
+        <span>Operativo</span>
+    </div>
 </div>
-</div>
+
 <div class="status-row">
-<span>Próximo mantenimiento</span>
-<strong>04 Mayo 2027</strong>
+    <span>Próximo mantenimiento</span>
+    <strong>04 Mayo 2027</strong>
 </div>
+
 <div class="status-row">
-<span>Horas Totales</span>
-<strong id="totalHours">87.0 hr</strong>
+    <span>Horas Totales</span>
+    <strong id="totalHours">87.0 hr</strong>
 </div>
+
 <div class="btn-group">
 <button class="btn">NOTIFICACIONES</button>
 <button class="btn">SOPORTE</button>
 </div>
+
 </div>
 
-<!-- CENTER -->
 <div class="card">
 <div class="section-title">PRESIÓN DIFERENCIAL</div>
 <div class="gauge-wrapper">
@@ -441,7 +450,6 @@ body{
 </div>
 </div>
 
-<!-- RIGHT -->
 <div class="card">
 <div class="section-title">CONSUMOS Y OPERACIÓN</div>
 <div class="usage">
@@ -462,188 +470,191 @@ body{
 </div>
 </div>
 
-<!-- BOTTOM -->
 <div class="bottom">
-<div class="metric">
-<div class="metric-icon">⬇️</div>
-<div class="metric-title">Estado Descarga</div>
-<div class="led green" style="margin:auto;"></div>
-</div>
-<div class="metric">
-<div class="metric-icon">⚙️</div>
-<div class="metric-title">Válvula Pulso</div>
-<div class="led green" style="margin:auto;"></div>
-</div>
-<div class="metric">
-<div class="metric-icon">💨</div>
-<div class="metric-title">Presión Inlet</div>
-<div class="led yellow" style="margin:auto;"></div>
-<div style="margin-top:10px;" id="inletValue">6.8 kPa</div>
-</div>
-<div class="metric">
-<div class="metric-icon">🌡️</div>
-<div class="metric-title">Temperatura</div>
-<div class="led green" id="tempLed" style="margin:auto;"></div>
-<div style="margin-top:10px;" id="tempValue">24.0 °C</div>
-</div>
-<div class="metric">
-<div class="metric-icon">🛡️</div>
-<div class="metric-title">Emisión Polvo</div>
-<div class="led green" style="margin:auto;"></div>
-<div style="margin-top:10px;">&lt; 2 mg/m³</div>
-</div>
+<div class="metric"><div class="metric-icon">⬇️</div><div class="metric-title">Estado Descarga</div><div class="led green" style="margin:auto;"></div></div>
+<div class="metric"><div class="metric-icon">⚙️</div><div class="metric-title">Válvula Pulso</div><div class="led green" style="margin:auto;"></div></div>
+<div class="metric"><div class="metric-icon">💨</div><div class="metric-title">Presión Inlet</div><div class="led yellow" style="margin:auto;"></div><div style="margin-top:10px;" id="inletValue">6.8 kPa</div></div>
+<div class="metric"><div class="metric-icon">🌡️</div><div class="metric-title">Temperatura</div><div class="led green" id="tempLed" style="margin:auto;"></div><div style="margin-top:10px;" id="tempValue">24.0 °C</div></div>
+<div class="metric"><div class="metric-icon">🛡️</div><div class="metric-title">Emisión Polvo</div><div class="led green" style="margin:auto;"></div><div style="margin-top:10px;">&lt; 2 mg/m³</div></div>
 </div>
 
 <script>
-/* ==================================================
-   DASHBOARD SINCRONIZADO - TODOS LOS USUARIOS VEN LOS MISMOS VALORES
-   ================================================== */
+const SMOOTHING = {
+    PRESSURE: 0.08,
+    RPM: 0.06,
+    ENERGY: 0.07,
+    AIR: 0.09,
+    INLET: 0.1,
+    TEMP: 0.05
+};
 
-// Función determinista que reemplaza a Math.random()
-// Todos los usuarios obtienen el mismo número en el mismo momento
-function deterministicRandom(seed, min, max) {
-    const nowSec = Math.floor(Date.now() / 1000);
-    // Algoritmo determinista basado en seno y la semilla
-    let x = Math.sin(seed * 12.9898 + nowSec * 0.15 + seed * 43758.5453) * 43758.5453;
-    x = x - Math.floor(x);
-    let r = Math.abs(x - Math.floor(x));
-    return min + r * (max - min);
+const START_DATE = new Date("2025-01-01T00:00:00Z").getTime();
+
+function getRawTime() {
+    return (Date.now() - START_DATE) / 1000;
 }
 
-function psiToAngle(psi){
+function getTargetPressure(t) {
+    return 12 
+        + Math.sin(t * 0.008) * 3.5
+        + Math.sin(t * 0.003) * 1.8;
+}
+
+function getTargetRPM(t) {
+    const p = getTargetPressure(t);
+    return 1750 + (p - 12) * 6;
+}
+
+function getTargetEnergy(t) {
+    const p = getTargetPressure(t);
+    const base = 280 + (p - 12) * 2.5;
+    return base + Math.sin(t * 0.002) * 5;
+}
+
+function getTargetAir(t) {
+    const p = getTargetPressure(t);
+    return 0.28 + (p / 30) * 0.2 + Math.sin(t * 0.003) * 0.02;
+}
+
+function getTargetInlet(t) {
+    return 6.2 + Math.sin(t * 0.005) * 0.8 + Math.sin(t * 0.0015) * 0.3;
+}
+
+function getTargetTemp(t) {
+    const p = getTargetPressure(t);
+    return 23 + (p - 12) * 0.3 + Math.sin(t * 0.003) * 1.5;
+}
+
+let smoothPressure = 12.0;
+let smoothRPM = 1750;
+let smoothEnergy = 283;
+let smoothAir = 0.32;
+let smoothInlet = 6.8;
+let smoothTemp = 24.0;
+
+let lastUpdateTime = getRawTime();
+
+function updateSmoothValues() {
+    const now = getRawTime();
+    let dt = now - lastUpdateTime;
+    
+    if (dt > 0.5) dt = 0.5;
+    if (dt < 0.01) dt = 0.05;
+    
+    const targetPressure = getTargetPressure(now);
+    const targetRPM = getTargetRPM(now);
+    const targetEnergy = getTargetEnergy(now);
+    const targetAir = getTargetAir(now);
+    const targetInlet = getTargetInlet(now);
+    const targetTemp = getTargetTemp(now);
+    
+    const alphaP = Math.min(1, SMOOTHING.PRESSURE * (dt / 0.1));
+    const alphaR = Math.min(1, SMOOTHING.RPM * (dt / 0.1));
+    const alphaE = Math.min(1, SMOOTHING.ENERGY * (dt / 0.1));
+    const alphaA = Math.min(1, SMOOTHING.AIR * (dt / 0.1));
+    const alphaI = Math.min(1, SMOOTHING.INLET * (dt / 0.1));
+    const alphaT = Math.min(1, SMOOTHING.TEMP * (dt / 0.1));
+    
+    smoothPressure = smoothPressure + (targetPressure - smoothPressure) * alphaP;
+    smoothRPM = smoothRPM + (targetRPM - smoothRPM) * alphaR;
+    smoothEnergy = smoothEnergy + (targetEnergy - smoothEnergy) * alphaE;
+    smoothAir = smoothAir + (targetAir - smoothAir) * alphaA;
+    smoothInlet = smoothInlet + (targetInlet - smoothInlet) * alphaI;
+    smoothTemp = smoothTemp + (targetTemp - smoothTemp) * alphaT;
+    
+    lastUpdateTime = now;
+}
+
+function psiToAngle(psi) {
     psi = Math.max(0, Math.min(30, psi));
     return -90 + (psi / 30) * 180;
 }
 
-let pressure = 25.0;
-let targetPressure = 12.0;
-
-let rpm = 1750;
-let rpmTarget = 1750;
-
-let energy = 283;
-let air = 0.32;
-let inlet = 6.8;
-let temp = 24.0;
-
-let fanAngle = 0;
-
 const needle = document.getElementById("needle");
 const pressureValue = document.getElementById("pressureValue");
 const rpmValue = document.getElementById("rpmValue");
-const fan = document.getElementById("fan");
 const energyValue = document.getElementById("energyValue");
 const airValue = document.getElementById("airValue");
 const inletValue = document.getElementById("inletValue");
 const tempValue = document.getElementById("tempValue");
 const tempLed = document.getElementById("tempLed");
-const totalHours = document.getElementById("totalHours");
-const runtimeValue = document.getElementById("runtimeValue");
 
-const initialHours = 87;
-const pageStartTime = Date.now();
-
-function updateHours(){
-    const elapsed = (Date.now() - pageStartTime) / 3600000;
-    totalHours.innerText = (initialHours + elapsed).toFixed(1) + " hr";
-}
-setInterval(updateHours,1000);
-
-// Shift fijo para que todos tengan el mismo contador de turno
-// Usamos una fecha fija (2026-05-18 06:00:00 UTC)
-const fixedShiftStart = new Date("2026-05-18T06:00:00Z").getTime();
-
-function updateRuntime(){
-    const sec = Math.floor((Date.now() - fixedShiftStart)/1000);
-    const h = Math.floor(sec/3600);
-    const m = Math.floor((sec%3600)/60);
-    const s = sec%60;
-    runtimeValue.innerText = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-}
-setInterval(updateRuntime,1000);
-
-function updateGauge(){
-    const angle = psiToAngle(pressure);
+function updateUI() {
+    updateSmoothValues();
+    
+    const angle = psiToAngle(smoothPressure);
     needle.style.transform = `translateX(-50%) rotate(${angle}deg)`;
-    pressureValue.innerText = pressure.toFixed(1);
-    if(pressure < 12){
+    pressureValue.innerText = smoothPressure.toFixed(1);
+    
+    if (smoothPressure < 12) {
         pressureValue.style.color = "#22c55e";
-    }
-    else if(pressure < 22){
+    } else if (smoothPressure < 22) {
         pressureValue.style.color = "#facc15";
-    }
-    else{
+    } else {
         pressureValue.style.color = "#f97316";
     }
-}
-
-// PRESIÓN - sincronizada (reemplazado Math.random)
-setInterval(()=>{
-    let drift = deterministicRandom(1, -0.7, 0.7);
-    targetPressure += drift;
-    targetPressure = Math.max(2, Math.min(28, targetPressure));
-    pressure = pressure + (targetPressure - pressure) * 0.18;
-    pressure = Math.round(pressure * 10) / 10;
-    updateGauge();
-},2500);
-
-// RPM - sincronizada
-setInterval(()=>{
-    rpmTarget = 1750 + ((pressure - 12) * 2);
-    rpmTarget = Math.max(1738, Math.min(1762, rpmTarget));
-    rpm = rpm + (rpmTarget - rpm) * 0.08;
-    rpmValue.innerText = Math.round(rpm);
-},2000);
-
-function animateFan(){
-    let speed = rpm / 850;
-    fanAngle = (fanAngle + speed) % 360;
-    fan.style.transform = `rotate(${fanAngle}deg)`;
-    requestAnimationFrame(animateFan);
-}
-animateFan();
-
-// ENERGÍA - sincronizada
-setInterval(()=>{
-    energy += deterministicRandom(2, -1, 1);
-    energy = Math.max(270, Math.min(310, energy));
-    energyValue.innerText = Math.round(energy);
-},4000);
-
-// AIRE - sincronizada
-setInterval(()=>{
-    air += deterministicRandom(3, -0.01, 0.01);
-    air = Math.max(0.28, Math.min(0.48, air));
-    airValue.innerText = air.toFixed(2);
-},4000);
-
-// PRESIÓN INLET - sincronizada
-setInterval(()=>{
-    inlet += deterministicRandom(4, -0.06, 0.06);
-    inlet = Math.max(5.8, Math.min(7.6, inlet));
-    inletValue.innerText = inlet.toFixed(1) + " kPa";
-},5000);
-
-// TEMPERATURA - sincronizada
-setInterval(()=>{
-    temp += deterministicRandom(5, -0.1, 0.1);
-    temp = Math.max(21, Math.min(31, temp));
-    tempValue.innerText = temp.toFixed(1) + " °C";
-    if(temp > 28){
+    
+    rpmValue.innerText = Math.round(smoothRPM);
+    energyValue.innerText = Math.round(smoothEnergy);
+    airValue.innerText = smoothAir.toFixed(2);
+    inletValue.innerText = smoothInlet.toFixed(1) + " kPa";
+    tempValue.innerText = smoothTemp.toFixed(1) + " °C";
+    
+    if (smoothTemp > 28) {
         tempLed.className = "led red";
-    }
-    else if(temp > 25){
+    } else if (smoothTemp > 25) {
         tempLed.className = "led yellow";
-    }
-    else{
+    } else {
         tempLed.className = "led green";
     }
-},5000);
+}
 
-updateGauge();
-updateHours();
+let fanAngle = 0;
+let lastFanTime = 0;
+const fan = document.getElementById("fan");
+
+function animateFan(now) {
+    if (!lastFanTime) lastFanTime = now;
+    const delta = Math.min(50, now - lastFanTime);
+    
+    if (delta > 0) {
+        const rpm = smoothRPM;
+        const speed = (rpm / 1750) * 300;
+        fanAngle = (fanAngle + speed * (delta / 1000)) % 360;
+        fan.style.transform = `rotate(${fanAngle}deg)`;
+    }
+    
+    lastFanTime = now;
+    requestAnimationFrame(animateFan);
+}
+requestAnimationFrame(animateFan);
+
+const TOTAL_HOURS_BASE = 87.0;
+const PLANT_START = START_DATE;
+
+function updateTotalHours() {
+    const elapsedHours = (Date.now() - PLANT_START) / 3600000;
+    const total = TOTAL_HOURS_BASE + elapsedHours;
+    document.getElementById("totalHours").innerText = total.toFixed(1) + " hr";
+}
+
+function updateRuntime() {
+    const elapsedSeconds = (Date.now() - PLANT_START) / 1000;
+    const shiftSeconds = elapsedSeconds % (8 * 3600);
+    const h = Math.floor(shiftSeconds / 3600);
+    const m = Math.floor((shiftSeconds % 3600) / 60);
+    const s = Math.floor(shiftSeconds % 60);
+    document.getElementById("runtimeValue").innerText = 
+        `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+setInterval(updateUI, 50);
+setInterval(updateTotalHours, 1000);
+setInterval(updateRuntime, 1000);
+
+updateUI();
+updateTotalHours();
 updateRuntime();
-
 </script>
 
 </body>
