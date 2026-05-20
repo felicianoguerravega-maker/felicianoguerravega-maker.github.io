@@ -22,62 +22,32 @@ body{
     font-family:'Inter',sans-serif;
     color:#e2e8f0;
     padding:20px;
-
-    /* SOLO agregado para evitar scroll horizontal en celular */
     overflow-x:hidden;
 }
 
-/* ====================================== */
-/* DASHBOARD */
-/* ====================================== */
-
 .dashboard{
-
     max-width:1500px;
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-    1fr 1.3fr 1fr;
-
+    grid-template-columns:1fr 1.3fr 1fr;
     gap:20px;
 }
 
-/* ====================================== */
-/* CARD */
-/* ====================================== */
-
 .card{
-
     background:#111827;
-
     border:1px solid #1e293b;
-
     border-radius:24px;
-
     padding:24px;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.4);
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
 .section-title{
-
     font-size:13px;
-
     font-weight:800;
-
     letter-spacing:1px;
-
     color:#94a3b8;
-
     margin-bottom:20px;
 }
-
-/* ====================================== */
-/* LEFT */
-/* ====================================== */
 
 .machine-img{
     width:90px;
@@ -85,69 +55,42 @@ body{
 }
 
 .specs{
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:14px;
-
     margin-bottom:24px;
 }
 
 .spec{
-
     background:#0f172a;
-
     border-radius:14px;
-
     padding:14px;
 }
 
 .spec-label{
-
     font-size:11px;
-
     color:#94a3b8;
-
     margin-bottom:5px;
-
     text-transform:uppercase;
 }
 
 .spec-value{
-
     font-size:18px;
-
     font-weight:700;
 }
 
 .status-row{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     padding:14px 0;
-
-    border-bottom:
-    1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-/* ====================================== */
-/* LED */
-/* ====================================== */
-
 .led{
-
     width:12px;
     height:12px;
-
     border-radius:50%;
-
-    /* SOLO agregado: luces pulsantes lentas */
     animation: pulse 3s infinite ease-in-out;
 }
 
@@ -166,56 +109,27 @@ body{
     box-shadow:0 0 10px #ef4444;
 }
 
-/* SOLO agregado */
 @keyframes pulse{
-
-    0%{
-        opacity:1;
-        transform:scale(1);
-    }
-
-    50%{
-        opacity:.4;
-        transform:scale(.92);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1);
-    }
+    0%{ opacity:1; transform:scale(1); }
+    50%{ opacity:.4; transform:scale(.92); }
+    100%{ opacity:1; transform:scale(1); }
 }
 
-/* ====================================== */
-/* BUTTONS */
-/* ====================================== */
-
 .btn-group{
-
     display:flex;
-
     gap:12px;
-
     margin-top:24px;
 }
 
 .btn{
-
     flex:1;
-
     background:#1d4ed8;
-
     color:white;
-
     border:none;
-
     border-radius:12px;
-
     padding:12px;
-
     font-weight:700;
-
     cursor:pointer;
-
     transition:.2s;
 }
 
@@ -223,297 +137,139 @@ body{
     background:#2563eb;
 }
 
-/* ====================================== */
-/* GAUGE */
-/* ====================================== */
-
 .gauge-wrapper{
-
     width:100%;
-
     display:flex;
     flex-direction:column;
-
     justify-content:center;
     align-items:center;
-
     padding-top:5px;
-
-    /* SOLO agregado */
     overflow:hidden;
 }
 
 .gauge{
-
     position:relative;
-
     width:460px;
     height:240px;
 }
 
-/* ====================================== */
-/* ARCO */
-/* ====================================== */
-
 .gauge-ring{
-
     position:absolute;
-
     width:460px;
     height:460px;
-
     border-radius:50%;
-
-    background:
-    conic-gradient(
-         from 240deg,
-        #22c55e 0deg,
-        #22c55e 80deg,
-        #eab308 130deg,
-        #f97316 185deg,
-        #ef4444 240deg,
-        transparent 240deg
-    );
-
+    background:conic-gradient(from 240deg, #22c55e 0deg, #22c55e 80deg, #eab308 130deg, #f97316 185deg, #ef4444 240deg, transparent 240deg);
     clip-path: inset(0 0 50% 0);
 }
-
-/* ====================================== */
-/* INTERIOR */
-/* ====================================== */
 
 .gauge-inner{
-
     position:absolute;
-
     width:350px;
     height:350px;
-
     left:55px;
     top:55px;
-
     background:#081225;
-
     border-radius:50%;
-
     border:4px solid #1e293b;
-
     clip-path: inset(0 0 50% 0);
 }
 
-/* ====================================== */
-/* LABELS */
-/* ====================================== */
-
 .label{
-
     position:absolute;
-
     color:#e2e8f0;
-
     font-size:18px;
-
     font-weight:800;
-
     z-index:20;
 }
 
-/* ====================================== */
-/* POSICIONES */
-/* ====================================== */
-
-.l0{
-    left:18px;
-    top:182px;
-}
-
-.l5{
-    left:50px;
-    top:100px;
-}
-
-.l10{
-    left:130px;
-    top:38px;
-}
-
-.l15{
-    left:218px;
-    top:10px;
-}
-
-.l20{
-    right:130px;
-    top:38px;
-}
-
-.l25{
-    right:50px;
-    top:100px;
-}
-
-.l30{
-    right:18px;
-    top:182px;
-}
-
-/* ====================================== */
-/* AGUJA */
-/* ====================================== */
+.l0{ left:18px; top:182px; }
+.l5{ left:50px; top:100px; }
+.l10{ left:130px; top:38px; }
+.l15{ left:218px; top:10px; }
+.l20{ right:130px; top:38px; }
+.l25{ right:50px; top:100px; }
+.l30{ right:18px; top:182px; }
 
 .needle{
-
     position:absolute;
-
     width:8px;
     height:165px;
-
-    background:
-    linear-gradient(
-        to top,
-        #dc2626,
-        #ff3b3b
-    );
-
+    background:linear-gradient(to top, #dc2626, #ff3b3b);
     border-radius:20px;
-
     left:50%;
     bottom:18px;
-
     transform-origin:50% 100%;
-
-    transform:
-    translateX(-50%)
-    rotate(0deg);
-
+    transform:translateX(-50%) rotate(0deg);
     z-index:40;
-
-    box-shadow:
-    0 0 18px rgba(255,0,0,.45);
-
-    transition:
-    transform .8s ease;
+    box-shadow:0 0 18px rgba(255,0,0,.45);
+    transition:transform .8s ease;
 }
 
-/* ====================================== */
-/* CENTRO */
-/* ====================================== */
-
 .needle-center{
-
     position:absolute;
-
     width:42px;
     height:42px;
-
     background:#cbd5e1;
-
     border:6px solid #475569;
-
     border-radius:50%;
-
     left:50%;
     bottom:0;
-
     transform:translateX(-50%);
-
     z-index:50;
 }
 
-/* ====================================== */
-/* VALUE BOX */
-/* ====================================== */
-
 .value-box{
-
     margin-top:8px;
-
     width:240px;
-
     background:#0f172a;
-
     border:2px solid #334155;
-
     border-radius:18px;
-
     padding:14px;
-
     text-align:center;
 }
 
 .value-number{
-
     font-size:54px;
-
     font-weight:900;
-
     color:#facc15;
-
     line-height:1;
 }
 
 .value-text{
-
     margin-top:6px;
-
     color:#94a3b8;
-
     font-size:14px;
 }
 
-/* ====================================== */
-/* FAN */
-/* ====================================== */
-
 .fan-section{
-
     margin-top:30px;
-
     border-top:1px solid #1e293b;
-
     padding-top:24px;
-
     text-align:center;
 }
 
 .fan-container{
-
     width:130px;
     height:130px;
-
     margin:auto;
-
     position:relative;
 }
 
 .fan{
-
     width:130px;
     height:130px;
-
     position:absolute;
     inset:0;
 }
 
 .blade{
-
     position:absolute;
-
     width:130px;
     height:14px;
-
     top:58px;
     left:0;
-
     border-radius:30px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #334155,
-        #94a3b8,
-        #334155
-    );
+    background:linear-gradient(90deg, #334155, #94a3b8, #334155);
 }
 
 .blade-0{ transform:rotate(0deg); }
@@ -524,177 +280,85 @@ body{
 .blade-5{ transform:rotate(300deg); }
 
 .fan-center{
-
     position:absolute;
-
     width:34px;
     height:34px;
-
     border-radius:50%;
-
     background:#cbd5e1;
-
     border:4px solid #475569;
-
     top:48px;
     left:48px;
-
     z-index:30;
 }
 
 .fan-status{
-
     margin-top:12px;
-
     color:#94a3b8;
-
     font-size:13px;
 }
 
-/* ====================================== */
-/* RIGHT */
-/* ====================================== */
-
 .usage{
-
     margin-bottom:30px;
 }
 
 .usage-label{
-
     color:#94a3b8;
-
     font-size:13px;
-
     margin-bottom:6px;
 }
 
 .big-value{
-
     font-size:48px;
-
     font-weight:900;
 }
 
-/* ====================================== */
-/* BOTTOM */
-/* ====================================== */
-
 .bottom{
-
     max-width:1500px;
-
     margin:20px auto 0;
-
     display:grid;
-
-    grid-template-columns:
-    repeat(5,1fr);
-
+    grid-template-columns:repeat(5,1fr);
     gap:20px;
 }
 
 .metric{
-
     background:#111827;
-
     border:1px solid #1e293b;
-
     border-radius:20px;
-
     padding:20px;
-
     text-align:center;
 }
 
 .metric-icon{
-
     font-size:30px;
-
     margin-bottom:12px;
 }
 
 .metric-title{
-
     color:#94a3b8;
-
     font-size:13px;
-
     margin-bottom:12px;
 }
 
-/* ====================================== */
-/* RESPONSIVE */
-/* ====================================== */
-
 @media(max-width:1200px){
-
-    .dashboard{
-        grid-template-columns:1fr;
-    }
-
-    .bottom{
-        grid-template-columns:1fr 1fr;
-    }
+    .dashboard{ grid-template-columns:1fr; }
+    .bottom{ grid-template-columns:1fr 1fr; }
 }
 
 @media(max-width:768px){
-
-    body{
-        padding:14px;
-    }
-
-    .card{
-        padding:18px;
-    }
-
-    /* SOLO ajuste celular */
-    .gauge{
-        transform:scale(.78);
-        transform-origin:top center;
-        margin-bottom:-40px;
-    }
-
-    .bottom{
-        grid-template-columns:1fr;
-    }
-
-    .btn-group{
-        flex-direction:column;
-    }
-
-    .big-value{
-        font-size:38px;
-    }
+    body{ padding:14px; }
+    .card{ padding:18px; }
+    .gauge{ transform:scale(.78); transform-origin:top center; margin-bottom:-40px; }
+    .bottom{ grid-template-columns:1fr; }
+    .btn-group{ flex-direction:column; }
+    .big-value{ font-size:38px; }
 }
 
 @media(max-width:520px){
-
-    /* SOLO ajuste celular */
-    .gauge{
-        transform:scale(.60);
-        transform-origin:top center;
-        margin-bottom:-80px;
-    }
-
-    .spec-value{
-        font-size:15px;
-    }
-
-    .value-number{
-        font-size:42px;
-    }
-
-    /* SOLO agregado para móvil */
-    .metric{
-        padding:16px;
-    }
-
-    .status-row{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:8px;
-    }
+    .gauge{ transform:scale(.60); transform-origin:top center; margin-bottom:-80px; }
+    .spec-value{ font-size:15px; }
+    .value-number{ font-size:42px; }
+    .metric{ padding:16px; }
+    .status-row{ flex-direction:column; align-items:flex-start; gap:8px; }
 }
 
 </style>
@@ -705,86 +369,44 @@ body{
 <div class="dashboard">
 
 <!-- LEFT -->
-
 <div class="card">
-
-<img class="machine-img"
-src="https://cdn-icons-png.flaticon.com/512/2942/2942789.png">
-
-<div class="section-title">
-SISTEMA DE FILTRACIÓN MINERA
-</div>
-
+<img class="machine-img" src="https://cdn-icons-png.flaticon.com/512/2942/2942789.png">
+<div class="section-title">SISTEMA DE FILTRACIÓN MINERA</div>
 <div class="specs">
-
-<div class="spec">
-<div class="spec-label">Modelo</div>
-<div class="spec-value">GSX-15P</div>
+<div class="spec"><div class="spec-label">Modelo</div><div class="spec-value">GSX-15P</div></div>
+<div class="spec"><div class="spec-label">Caudal</div><div class="spec-value">15,000 m³/h</div></div>
+<div class="spec"><div class="spec-label">Válvula</div><div class="spec-value">1 1/2"</div></div>
+<div class="spec"><div class="spec-label">Aplicación</div><div class="spec-value">HVOF</div></div>
 </div>
-
-<div class="spec">
-<div class="spec-label">Caudal</div>
-<div class="spec-value">15,000 m³/h</div>
-</div>
-
-<div class="spec">
-<div class="spec-label">Válvula</div>
-<div class="spec-value">1 1/2"</div>
-</div>
-
-<div class="spec">
-<div class="spec-label">Aplicación</div>
-<div class="spec-value">HVOF</div>
-</div>
-
-</div>
-
-<div class="section-title">
-ESTADO OPERACIONAL
-</div>
-
+<div class="section-title">ESTADO OPERACIONAL</div>
 <div class="status-row">
 <span>Sistema General</span>
-
 <div style="display:flex;gap:10px;align-items:center;">
 <div class="led green"></div>
 <span>Operativo</span>
 </div>
 </div>
-
 <div class="status-row">
 <span>Próximo mantenimiento</span>
 <strong>04 Mayo 2027</strong>
 </div>
-
 <div class="status-row">
 <span>Horas Totales</span>
 <strong id="totalHours">87.0 hr</strong>
 </div>
-
 <div class="btn-group">
 <button class="btn">NOTIFICACIONES</button>
 <button class="btn">SOPORTE</button>
 </div>
-
 </div>
 
 <!-- CENTER -->
-
 <div class="card">
-
-<div class="section-title">
-PRESIÓN DIFERENCIAL
-</div>
-
+<div class="section-title">PRESIÓN DIFERENCIAL</div>
 <div class="gauge-wrapper">
-
 <div class="gauge">
-
 <div class="gauge-ring"></div>
-
 <div class="gauge-inner"></div>
-
 <div class="label l0">0</div>
 <div class="label l5">5</div>
 <div class="label l10">10</div>
@@ -792,180 +414,104 @@ PRESIÓN DIFERENCIAL
 <div class="label l20">20</div>
 <div class="label l25">25</div>
 <div class="label l30">30</div>
-
 <div class="needle" id="needle"></div>
-
 <div class="needle-center"></div>
-
 </div>
-
 <div class="value-box">
-
-<div class="value-number" id="pressureValue">
-12.0
+<div class="value-number" id="pressureValue">12.0</div>
+<div class="value-text">PSI • Caída de presión filtros</div>
 </div>
-
-<div class="value-text">
-PSI • Caída de presión filtros
 </div>
-
-</div>
-
-</div>
-
-<!-- FAN -->
-
 <div class="fan-section">
-
 <div class="fan-container">
-
 <div class="fan" id="fan">
-
 <div class="blade blade-0"></div>
 <div class="blade blade-1"></div>
 <div class="blade blade-2"></div>
 <div class="blade blade-3"></div>
 <div class="blade blade-4"></div>
 <div class="blade blade-5"></div>
-
 <div class="fan-center"></div>
-
 </div>
-
 </div>
-
-<div class="fan-status">
-EXTRACTOR PRINCIPAL
-</div>
-
-<div style="
-margin-top:10px;
-font-weight:800;
-color:#22c55e;
-font-size:22px;
-">
+<div class="fan-status">EXTRACTOR PRINCIPAL</div>
+<div style="margin-top:10px; font-weight:800; color:#22c55e; font-size:22px;">
 <span id="rpmValue">1750</span> RPM
 </div>
-
 </div>
-
 </div>
 
 <!-- RIGHT -->
-
 <div class="card">
-
-<div class="section-title">
-CONSUMOS Y OPERACIÓN
-</div>
-
+<div class="section-title">CONSUMOS Y OPERACIÓN</div>
 <div class="usage">
-
-<div class="usage-label">
-Energía eléctrica
-</div>
-
-<div class="big-value" id="energyValue">
-283
-</div>
-
+<div class="usage-label">Energía eléctrica</div>
+<div class="big-value" id="energyValue">283</div>
 <span>kWh · últimos 30 días</span>
-
 </div>
-
 <div class="usage">
-
-<div class="usage-label">
-Aire comprimido
-</div>
-
-<div class="big-value" id="airValue">
-0.32
-</div>
-
+<div class="usage-label">Aire comprimido</div>
+<div class="big-value" id="airValue">0.32</div>
 <span>m³/min</span>
-
 </div>
-
 <div class="usage">
-
-<div class="usage-label">
-Tiempo operación
-</div>
-
-<div class="big-value" id="runtimeValue">
-00:00:00
-</div>
-
+<div class="usage-label">Tiempo operación</div>
+<div class="big-value" id="runtimeValue">00:00:00</div>
 <span>Turno actual</span>
-
 </div>
-
 </div>
-
 </div>
 
 <!-- BOTTOM -->
-
 <div class="bottom">
-
 <div class="metric">
 <div class="metric-icon">⬇️</div>
 <div class="metric-title">Estado Descarga</div>
 <div class="led green" style="margin:auto;"></div>
 </div>
-
 <div class="metric">
 <div class="metric-icon">⚙️</div>
 <div class="metric-title">Válvula Pulso</div>
 <div class="led green" style="margin:auto;"></div>
 </div>
-
 <div class="metric">
 <div class="metric-icon">💨</div>
 <div class="metric-title">Presión Inlet</div>
 <div class="led yellow" style="margin:auto;"></div>
-
-<div style="margin-top:10px;" id="inletValue">
-6.8 kPa
+<div style="margin-top:10px;" id="inletValue">6.8 kPa</div>
 </div>
-</div>
-
 <div class="metric">
 <div class="metric-icon">🌡️</div>
 <div class="metric-title">Temperatura</div>
-
-<div class="led green" id="tempLed"
-style="margin:auto;"></div>
-
-<div style="margin-top:10px;" id="tempValue">
-24.0 °C
+<div class="led green" id="tempLed" style="margin:auto;"></div>
+<div style="margin-top:10px;" id="tempValue">24.0 °C</div>
 </div>
-</div>
-
 <div class="metric">
 <div class="metric-icon">🛡️</div>
 <div class="metric-title">Emisión Polvo</div>
-
-<div class="led green"
-style="margin:auto;"></div>
-
-<div style="margin-top:10px;">
-&lt; 2 mg/m³
+<div class="led green" style="margin:auto;"></div>
+<div style="margin-top:10px;">&lt; 2 mg/m³</div>
 </div>
-</div>
-
 </div>
 
 <script>
+/* ==================================================
+   DASHBOARD SINCRONIZADO - TODOS LOS USUARIOS VEN LOS MISMOS VALORES
+   ================================================== */
 
-/* TU SCRIPT ORIGINAL COMPLETO */
-/* NO CAMBIADO */
+// Función determinista que reemplaza a Math.random()
+// Todos los usuarios obtienen el mismo número en el mismo momento
+function deterministicRandom(seed, min, max) {
+    const nowSec = Math.floor(Date.now() / 1000);
+    // Algoritmo determinista basado en seno y la semilla
+    let x = Math.sin(seed * 12.9898 + nowSec * 0.15 + seed * 43758.5453) * 43758.5453;
+    x = x - Math.floor(x);
+    let r = Math.abs(x - Math.floor(x));
+    return min + r * (max - min);
+}
 
 function psiToAngle(psi){
-
     psi = Math.max(0, Math.min(30, psi));
-
     return -90 + (psi / 30) * 180;
 }
 
@@ -982,226 +528,116 @@ let temp = 24.0;
 
 let fanAngle = 0;
 
-const needle =
-document.getElementById("needle");
-
-const pressureValue =
-document.getElementById("pressureValue");
-
-const rpmValue =
-document.getElementById("rpmValue");
-
-const fan =
-document.getElementById("fan");
-
-const energyValue =
-document.getElementById("energyValue");
-
-const airValue =
-document.getElementById("airValue");
-
-const inletValue =
-document.getElementById("inletValue");
-
-const tempValue =
-document.getElementById("tempValue");
-
-const tempLed =
-document.getElementById("tempLed");
-
-const totalHours =
-document.getElementById("totalHours");
-
-const runtimeValue =
-document.getElementById("runtimeValue");
+const needle = document.getElementById("needle");
+const pressureValue = document.getElementById("pressureValue");
+const rpmValue = document.getElementById("rpmValue");
+const fan = document.getElementById("fan");
+const energyValue = document.getElementById("energyValue");
+const airValue = document.getElementById("airValue");
+const inletValue = document.getElementById("inletValue");
+const tempValue = document.getElementById("tempValue");
+const tempLed = document.getElementById("tempLed");
+const totalHours = document.getElementById("totalHours");
+const runtimeValue = document.getElementById("runtimeValue");
 
 const initialHours = 87;
 const pageStartTime = Date.now();
 
 function updateHours(){
-
-    const elapsed =
-    (Date.now() - pageStartTime)
-    / 3600000;
-
-    totalHours.innerText =
-    (initialHours + elapsed).toFixed(1)
-    + " hr";
+    const elapsed = (Date.now() - pageStartTime) / 3600000;
+    totalHours.innerText = (initialHours + elapsed).toFixed(1) + " hr";
 }
-
 setInterval(updateHours,1000);
 
-//const shiftStart = Date.now()-(55*60*60*1000);
-const shiftStart = new Date(Date.now() - (3 * 24 * 60 * 60 * 1000)).getTime();
+// Shift fijo para que todos tengan el mismo contador de turno
+// Usamos una fecha fija (2026-05-18 06:00:00 UTC)
+const fixedShiftStart = new Date("2026-05-18T06:00:00Z").getTime();
+
 function updateRuntime(){
-
-    const sec =
-    Math.floor(
-    (Date.now() - shiftStart)/1000
-    );
-
-    const h =
-    Math.floor(sec/3600);
-
-    const m =
-    Math.floor((sec%3600)/60);
-
-    const s =
-    sec%60;
-
-    runtimeValue.innerText =
-    `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    const sec = Math.floor((Date.now() - fixedShiftStart)/1000);
+    const h = Math.floor(sec/3600);
+    const m = Math.floor((sec%3600)/60);
+    const s = sec%60;
+    runtimeValue.innerText = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
 }
-
 setInterval(updateRuntime,1000);
 
 function updateGauge(){
-
-    const angle =
-    psiToAngle(pressure);
-
-    needle.style.transform =
-    `translateX(-50%) rotate(${angle}deg)`;
-
-    pressureValue.innerText =
-    pressure.toFixed(1);
-
+    const angle = psiToAngle(pressure);
+    needle.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+    pressureValue.innerText = pressure.toFixed(1);
     if(pressure < 12){
-
-        pressureValue.style.color =
-        "#22c55e";
+        pressureValue.style.color = "#22c55e";
     }
     else if(pressure < 22){
-
-        pressureValue.style.color =
-        "#facc15";
+        pressureValue.style.color = "#facc15";
     }
     else{
-
-        pressureValue.style.color =
-        "#f97316";
+        pressureValue.style.color = "#f97316";
     }
 }
 
+// PRESIÓN - sincronizada (reemplazado Math.random)
 setInterval(()=>{
-
-    let drift =
-    (Math.random() - 0.5) * 1.4;
-
+    let drift = deterministicRandom(1, -0.7, 0.7);
     targetPressure += drift;
-
-    targetPressure =
-    Math.max(2, Math.min(28, targetPressure));
-
-    pressure =
-    pressure +
-    (targetPressure - pressure) * 0.18;
-
-    pressure =
-    Math.round(pressure * 10) / 10;
-
+    targetPressure = Math.max(2, Math.min(28, targetPressure));
+    pressure = pressure + (targetPressure - pressure) * 0.18;
+    pressure = Math.round(pressure * 10) / 10;
     updateGauge();
-
 },2500);
 
+// RPM - sincronizada
 setInterval(()=>{
-
-    rpmTarget =
-    1750 + ((pressure - 12) * 2);
-
-    rpmTarget =
-    Math.max(1738, Math.min(1762, rpmTarget));
-
-    rpm =
-    rpm +
-    (rpmTarget - rpm) * 0.08;
-
-    rpmValue.innerText =
-    Math.round(rpm);
-
+    rpmTarget = 1750 + ((pressure - 12) * 2);
+    rpmTarget = Math.max(1738, Math.min(1762, rpmTarget));
+    rpm = rpm + (rpmTarget - rpm) * 0.08;
+    rpmValue.innerText = Math.round(rpm);
 },2000);
 
 function animateFan(){
-
     let speed = rpm / 850;
-
-    fanAngle =
-    (fanAngle + speed) % 360;
-
-    fan.style.transform =
-    `rotate(${fanAngle}deg)`;
-
+    fanAngle = (fanAngle + speed) % 360;
+    fan.style.transform = `rotate(${fanAngle}deg)`;
     requestAnimationFrame(animateFan);
 }
-
 animateFan();
 
+// ENERGÍA - sincronizada
 setInterval(()=>{
-
-    energy +=
-    (Math.random() - 0.5) * 2;
-
-    energy =
-    Math.max(270, Math.min(310, energy));
-
-    energyValue.innerText =
-    Math.round(energy);
-
+    energy += deterministicRandom(2, -1, 1);
+    energy = Math.max(270, Math.min(310, energy));
+    energyValue.innerText = Math.round(energy);
 },4000);
 
+// AIRE - sincronizada
 setInterval(()=>{
-
-    air +=
-    (Math.random() - 0.5) * 0.02;
-
-    air =
-    Math.max(0.28, Math.min(0.48, air));
-
-    airValue.innerText =
-    air.toFixed(2);
-
+    air += deterministicRandom(3, -0.01, 0.01);
+    air = Math.max(0.28, Math.min(0.48, air));
+    airValue.innerText = air.toFixed(2);
 },4000);
 
+// PRESIÓN INLET - sincronizada
 setInterval(()=>{
-
-    inlet +=
-    (Math.random() - 0.5) * 0.12;
-
-    inlet =
-    Math.max(5.8, Math.min(7.6, inlet));
-
-    inletValue.innerText =
-    inlet.toFixed(1) + " kPa";
-
+    inlet += deterministicRandom(4, -0.06, 0.06);
+    inlet = Math.max(5.8, Math.min(7.6, inlet));
+    inletValue.innerText = inlet.toFixed(1) + " kPa";
 },5000);
 
+// TEMPERATURA - sincronizada
 setInterval(()=>{
-
-    temp +=
-    (Math.random() - 0.5) * 0.2;
-
-    temp =
-    Math.max(21, Math.min(31, temp));
-
-    tempValue.innerText =
-    temp.toFixed(1) + " °C";
-
+    temp += deterministicRandom(5, -0.1, 0.1);
+    temp = Math.max(21, Math.min(31, temp));
+    tempValue.innerText = temp.toFixed(1) + " °C";
     if(temp > 28){
-
-        tempLed.className =
-        "led red";
+        tempLed.className = "led red";
     }
     else if(temp > 25){
-
-        tempLed.className =
-        "led yellow";
+        tempLed.className = "led yellow";
     }
     else{
-
-        tempLed.className =
-        "led green";
+        tempLed.className = "led green";
     }
-
 },5000);
 
 updateGauge();
